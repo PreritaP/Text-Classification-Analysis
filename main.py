@@ -26,10 +26,10 @@ while next_page and len(all_comments) < max_comments :
         next_page = base_url + next_page.find('a').get('href')
     print('comments: {}'.format(len(all_comments)))
 
-#print(all_comments)
+#all comments
 print(len(all_comments))
 
-#remove hindi content
+#Cleaning : remove hindi content
 import enchant
 import nltk
 d = enchant.Dict("en_US")
@@ -42,8 +42,8 @@ for string in all_comments:
 			english_words.append(word)
 	line = ' '.join(english_words)
 	list.append(line)
-#print(list)
-#csv code
+
+
 ai = open('comments.xls', 'a')
 writer = csv.writer(ai)
 for i in list:
@@ -66,7 +66,7 @@ words = lower_case.split()
 from nltk.corpus import stopwords # Import the stop word list
 #print (stopwords.words("english"))
 words = [w for w in words if not w in stopwords.words("english")]
-# print (words)
+
 
 pos = ['nice','brilliant','great','good','excellent','entertain','funny','cool','best','fun']
 neg = ['bad','gross','disappointed','poor','terrible','crass','boring','uninspiring','disappoint']
@@ -148,4 +148,4 @@ print (top10)
 line_chart = pygal.Bar()
 for token,count in top10:
 	line_chart.add(token,count)
-line_chart.render_to_file('bar_chart.svg'
+line_chart.render_to_file('bar_chart.svg')
